@@ -1,0 +1,15 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  
+  // https://github.com/react-cosmos/react-cosmos#available-options
+  "json.schemas": [
+    {
+      "fileMatch": ["cosmos.config.json"],
+      "url": "http://json.schemastore.org/cosmos-config"
+    },
+    {
+      "fileMatch": ["/.babelrc"],
+      "url": "http://json.schemastore.org/babelrc"
+    }    
+  ]
+}

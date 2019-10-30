@@ -1,0 +1,754 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "bioschemas": "http://bioschemas.org",
+    "codemeta": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "stencila": "https://stencila.github.io/schema/01-draft",
+    "type": "@type",
+    "id": "@id"
+  },
+  "Article": {
+    "@id": "schema:Article"
+  },
+  "Brand": {
+    "@id": "schema:Brand"
+  },
+  "Code": {
+    "@id": "stencila:Code",
+    "@type": "schema:Class",
+    "schema:name": "Code",
+    "schema:description": "Inline code."
+  },
+  "CodeBlock": {
+    "@id": "stencila:CodeBlock",
+    "@type": "schema:Class",
+    "schema:name": "CodeBlock",
+    "schema:description": "A code block."
+  },
+  "CodeChunk": {
+    "@id": "stencila:CodeChunk",
+    "@type": "schema:Class",
+    "schema:name": "CodeChunk",
+    "schema:description": "A chunk of code that can be embedded inside a document.\n"
+  },
+  "CodeChunkMetadata": {
+    "@id": "stencila:CodeChunkMetadata",
+    "@type": "schema:Class",
+    "schema:name": "CodeChunkMetadata",
+    "schema:description": "Metadata describing the operation and display of a `CodeChunk`\n"
+  },
+  "CodeChunkOutputBase": {
+    "@id": "stencila:CodeChunkOutputBase",
+    "@type": "schema:Class",
+    "schema:name": "CodeChunkOutputBase",
+    "schema:description": "An \"abstract\" base for all output types (DisplayDataOutput, ExecutionResultOutput, ErrorOutput, StreamOutput)\n"
+  },
+  "Collection": {
+    "@id": "schema:Collection"
+  },
+  "ContactPoint": {
+    "@id": "schema:contactPoint"
+  },
+  "CreativeWork": {
+    "@id": "schema:CreativeWork"
+  },
+  "Datatable": {
+    "@id": "stencila:Datatable",
+    "@type": "schema:Class",
+    "schema:name": "Datatable",
+    "schema:description": "A table of data."
+  },
+  "DatatableColumn": {
+    "@id": "stencila:DatatableColumn",
+    "@type": "schema:Class",
+    "schema:name": "DatatableColumn"
+  },
+  "DatatableColumnSchema": {
+    "@id": "stencila:DatatableColumnSchema",
+    "@type": "schema:Class",
+    "schema:name": "DatatableColumnSchema"
+  },
+  "Delete": {
+    "@id": "stencila:Delete",
+    "@type": "schema:Class",
+    "schema:name": "Delete",
+    "schema:description": "Deleted textual content."
+  },
+  "DisplayDataOutput": {
+    "@id": "stencila:DisplayDataOutput",
+    "@type": "schema:Class",
+    "schema:name": "DisplayDataOutput",
+    "schema:description": "Data displayed as the result of code execution.\n"
+  },
+  "Emphasis": {
+    "@id": "stencila:Emphasis",
+    "@type": "schema:Class",
+    "schema:name": "Emphasis",
+    "schema:description": "Emphasised textual content."
+  },
+  "Environment": {
+    "@id": "stencila:Environment",
+    "@type": "schema:Class",
+    "schema:name": "Environment",
+    "schema:description": "A computational environment."
+  },
+  "ErrorOutput": {
+    "@id": "stencila:ErrorOutput",
+    "@type": "schema:Class",
+    "schema:name": "ErrorOutput",
+    "schema:description": "The output of an execution if there was an error while executing.\n"
+  },
+  "ExecutionResultOutput": {
+    "@id": "stencila:ExecutionResultOutput",
+    "@type": "schema:Class",
+    "schema:name": "ExecutionResultOutput",
+    "schema:description": "The result (return value) of executing some code.\n"
+  },
+  "Expression": {
+    "@id": "Expression"
+  },
+  "Heading": {
+    "@id": "stencila:Heading",
+    "@type": "schema:Class",
+    "schema:name": "Heading",
+    "schema:description": "Heading"
+  },
+  "ImageObject": {
+    "@id": "schema:ImageObject"
+  },
+  "Include": {
+    "@id": "stencila:Include",
+    "@type": "schema:Class",
+    "schema:name": "Include",
+    "schema:description": "A directive to include content from an external source (e.g. file, URL) or content.\n"
+  },
+  "Link": {
+    "@id": "stencila:Link",
+    "@type": "schema:Class",
+    "schema:name": "Link",
+    "schema:description": "A link."
+  },
+  "List": {
+    "@id": "schema:ItemList"
+  },
+  "MediaObject": {
+    "@id": "schema:MediaObject"
+  },
+  "Mount": {
+    "@id": "stencila:Mount",
+    "@type": "schema:Class",
+    "schema:name": "Mount",
+    "schema:description": "Describes a volume mount from a host to container.\n"
+  },
+  "Node": {
+    "@id": "stencila:Node",
+    "@type": "schema:Class",
+    "schema:name": "Node",
+    "schema:description": "Describes a valid value for any node in the tree.\n"
+  },
+  "Organization": {
+    "@id": "schema:Organization"
+  },
+  "OutputData": {
+    "@id": "stencila:OutputData",
+    "@type": "schema:Class",
+    "schema:name": "OutputData",
+    "schema:description": "The data that has been output from code execution. Property keys should be mimetypes,\nand their values the data in that format.\n"
+  },
+  "Paragraph": {
+    "@id": "stencila:Paragraph",
+    "@type": "schema:Class",
+    "schema:name": "Paragraph",
+    "schema:description": "Paragraph"
+  },
+  "Person": {
+    "@id": "schema:Person"
+  },
+  "Product": {
+    "@id": "schema:Product"
+  },
+  "Quote": {
+    "@id": "stencila:Quote",
+    "@type": "schema:Class",
+    "schema:name": "Quote",
+    "schema:description": "A short inline quote."
+  },
+  "QuoteBlock": {
+    "@id": "stencila:QuoteBlock",
+    "@type": "schema:Class",
+    "schema:name": "QuoteBlock",
+    "schema:description": "A section quoted from somewhere else.\n"
+  },
+  "ResourceParameters": {
+    "@id": "stencila:ResourceParameters",
+    "@type": "schema:Class",
+    "schema:name": "ResourceParameters",
+    "schema:description": "Describes limits or requested amounts for a particular resource (e.g. memory or CPU).\n"
+  },
+  "SoftwareApplication": {
+    "@id": "schema:SoftwareApplication"
+  },
+  "SoftwareSession": {
+    "@id": "stencila:SoftwareSession",
+    "@type": "schema:Class",
+    "schema:name": "SoftwareSession",
+    "schema:description": "Represents a runtime session with the resources and image that is required by software to execute.\n"
+  },
+  "SoftwareSourceCode": {
+    "@id": "schema:SoftwareSourceCode"
+  },
+  "StreamOutput": {
+    "@id": "stencila:StreamOutput",
+    "@type": "schema:Class",
+    "schema:name": "StreamOutput",
+    "schema:description": "The output of a stream (stdout, stderr) as the result of code execution.\n"
+  },
+  "Strong": {
+    "@id": "stencila:Strong",
+    "@type": "schema:Class",
+    "schema:name": "Strong",
+    "schema:description": "Strongly emphasised textual content."
+  },
+  "Table": {
+    "@id": "schema:Table"
+  },
+  "TableCell": {
+    "@id": "stencila:TableCell",
+    "@type": "schema:Class",
+    "schema:name": "TableCell",
+    "schema:description": "A cell within a `Table`.\n"
+  },
+  "TableRow": {
+    "@id": "stencila:TableRow",
+    "@type": "schema:Class",
+    "schema:name": "TableRow",
+    "schema:description": "A row within a Table."
+  },
+  "ThematicBreak": {
+    "@id": "stencila:ThematicBreak",
+    "@type": "schema:Class",
+    "schema:name": "ThematicBreak",
+    "schema:description": "A thematic break, such as a scene change in a story, a transition to another topic, or a new document.\n"
+  },
+  "Thing": {
+    "@id": "schema:Thing"
+  },
+  "UnknownOutput": {
+    "@id": "stencila:UnknownOutput",
+    "@type": "schema:Class",
+    "schema:name": "UnknownOutput",
+    "schema:description": "The output of code execution in a format that is unknown.\n"
+  },
+  "address": {
+    "@id": "schema:address"
+  },
+  "adds": {
+    "@id": "stencila:adds",
+    "@type": "schema:Property",
+    "schema:name": "adds",
+    "schema:description": "The packages that this environment adds to the base environments listed under `extends` (if any).,",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Environment"
+      }
+    ]
+  },
+  "affiliations": {
+    "@id": "schema:affiliation"
+  },
+  "alternateNames": {
+    "@id": "schema:alternateName"
+  },
+  "authors": {
+    "@id": "schema:author"
+  },
+  "availableLanguages": {
+    "@id": "schema:availableLanguage"
+  },
+  "brand": {
+    "@id": "schema:brand"
+  },
+  "brands": {
+    "@id": "schema:brand"
+  },
+  "caption": {
+    "@id": "schema:caption"
+  },
+  "cells": {
+    "@id": "stencila:cells",
+    "@type": "schema:Property",
+    "schema:name": "cells",
+    "schema:description": "An array of cells in the table.\n",
+    "schema:domainIncludes": [
+      {
+        "@id": "schema:Table"
+      },
+      {
+        "@id": "stencila:TableRow"
+      }
+    ]
+  },
+  "citation": {
+    "@id": "schema:citation"
+  },
+  "citations": {
+    "@id": "schema:citation"
+  },
+  "codeChunkMetadata": {
+    "@id": "stencila:codeChunkMetadata",
+    "@type": "schema:Property",
+    "schema:name": "codeChunkMetadata",
+    "schema:description": "Metadata regarding display and execution of the CodeChunk.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:CodeChunk"
+      }
+    ]
+  },
+  "codeRepository": {
+    "@id": "schema:codeRepository"
+  },
+  "codeSampleType": {
+    "@id": "schema:codeSampleType"
+  },
+  "collapsed": {
+    "@id": "stencila:collapsed",
+    "@type": "schema:Property",
+    "schema:name": "collapsed",
+    "schema:description": "Is the Codechunk collapsed?",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:CodeChunkMetadata"
+      }
+    ]
+  },
+  "colspan": {
+    "@id": "stencila:colspan",
+    "@type": "schema:Property",
+    "schema:name": "colspan",
+    "schema:description": "How many columns the cell extends.\n",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:TableCell"
+      }
+    ]
+  },
+  "contactPoints": {
+    "@id": "schema:contactPoint"
+  },
+  "content": {
+    "@id": "schema:content"
+  },
+  "contentUrl": {
+    "@id": "schema:contentUrl"
+  },
+  "cpuResource": {
+    "@id": "stencila:cpuResource",
+    "@type": "schema:Property",
+    "schema:name": "cpuResource",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:SoftwareSession"
+      }
+    ]
+  },
+  "departments": {
+    "@id": "schema:department"
+  },
+  "description": {
+    "@id": "schema:description"
+  },
+  "emails": {
+    "@id": "schema:email"
+  },
+  "environment": {
+    "@id": "stencila:environment",
+    "@type": "schema:Property",
+    "schema:name": "environment",
+    "schema:description": "The computational environment in which the document should be executed.\n",
+    "schema:domainIncludes": [
+      {
+        "@id": "schema:Article"
+      },
+      {
+        "@id": "stencila:SoftwareSession"
+      }
+    ]
+  },
+  "environmentSource": {
+    "@id": "stencila:environmentSource",
+    "@type": "schema:Property",
+    "schema:name": "environmentSource",
+    "schema:description": "Source of environment definition. For example, a URL to a Dockerfile, a path to Singularity recipe file,\nor a path to a filesystem folder.,\n",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Environment"
+      }
+    ]
+  },
+  "errorMessage": {
+    "@id": "stencila:errorValue",
+    "@type": "schema:Property",
+    "schema:name": "errorMessage",
+    "schema:description": "The message associated with the error or exception.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:ErrorOutput"
+      }
+    ]
+  },
+  "errorName": {
+    "@id": "stencila:errorName",
+    "@type": "schema:Property",
+    "schema:name": "errorName",
+    "schema:description": "The name of the error or exception that occured.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:ErrorOutput"
+      }
+    ]
+  },
+  "executionCount": {
+    "@id": "stencila:executionCount",
+    "@type": "schema:Property",
+    "schema:name": "executionCount",
+    "schema:description": "The prompt number of the chunk. Null if the CodeChunk has not been executed.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:CodeChunk"
+      },
+      {
+        "@id": "stencila:CodeChunkOutputBase"
+      },
+      {
+        "@id": "stencila:DisplayDataOutput"
+      },
+      {
+        "@id": "stencila:ErrorOutput"
+      },
+      {
+        "@id": "stencila:ExecutionResultOutput"
+      }
+    ]
+  },
+  "executionOutputs": {
+    "@id": "stencila:executionOutputs",
+    "@type": "schema:Property",
+    "schema:name": "executionOutputs",
+    "schema:description": "Execution, display, or stream outputs.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:CodeChunk"
+      }
+    ]
+  },
+  "extends": {
+    "@id": "stencila:extends",
+    "@type": "schema:Property",
+    "schema:name": "extends",
+    "schema:description": "Other environments that this environment extends by adding or removing packages.,",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Environment"
+      }
+    ]
+  },
+  "familyNames": {
+    "@id": "schema:familyName"
+  },
+  "funders": {
+    "@id": "schema:funder"
+  },
+  "givenNames": {
+    "@id": "schema:givenName"
+  },
+  "honorificPrefix": {
+    "@id": "schema:honorificPrefix"
+  },
+  "honorificSuffix": {
+    "@id": "schema:honorificSuffix"
+  },
+  "items": {
+    "@id": "schema:itemListElement"
+  },
+  "jobTitle": {
+    "@id": "schema:jobTitle"
+  },
+  "language": {
+    "@id": "schema:programmingLanguage"
+  },
+  "legalName": {
+    "@id": "schema:legalName"
+  },
+  "licenses": {
+    "@id": "schema:license"
+  },
+  "maintainers": {
+    "@id": "codemeta:maintainer"
+  },
+  "memberOf": {
+    "@id": "schema:memberOf"
+  },
+  "memoryResource": {
+    "@id": "stencila:memoryResource",
+    "@type": "schema:Property",
+    "schema:name": "memoryResource",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:SoftwareSession"
+      }
+    ]
+  },
+  "mountDestination": {
+    "@id": "stencila:mountDestination",
+    "@type": "schema:Property",
+    "schema:name": "mountDestination",
+    "schema:description": "The mount location inside the container.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Mount"
+      }
+    ]
+  },
+  "mountOptions": {
+    "@id": "stencila:mountOptions",
+    "@type": "schema:Property",
+    "schema:name": "mountOptions",
+    "schema:description": "A list of options to use when applying the mount.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Mount"
+      }
+    ]
+  },
+  "mountSource": {
+    "@id": "stencila:mountSource",
+    "@type": "schema:Property",
+    "schema:name": "mountSource",
+    "schema:description": "The mount source directory on the host.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Mount"
+      }
+    ]
+  },
+  "mountType": {
+    "@id": "stencila:mountType",
+    "@type": "schema:Property",
+    "schema:name": "mountType",
+    "schema:description": "The type of mount.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Mount"
+      }
+    ]
+  },
+  "name": {
+    "@id": "schema:name"
+  },
+  "order": {
+    "@id": "schema:itemListOrder"
+  },
+  "outputData": {
+    "@id": "stencila:outputData",
+    "@type": "schema:Property",
+    "schema:name": "outputData",
+    "schema:description": "The data that has been ouput from an execution.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:DisplayDataOutput"
+      },
+      {
+        "@id": "stencila:ExecutionResultOutput"
+      }
+    ]
+  },
+  "outputType": {
+    "@id": "stencila:outputType",
+    "@type": "schema:Property",
+    "schema:name": "outputType",
+    "schema:description": "Type of output.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:DisplayDataOutput"
+      },
+      {
+        "@id": "stencila:ErrorOutput"
+      },
+      {
+        "@id": "stencila:ExecutionResultOutput"
+      },
+      {
+        "@id": "stencila:UnknownOutput"
+      }
+    ]
+  },
+  "outputsHidden": {
+    "@id": "stencila:outputsHidden",
+    "@type": "schema:Property",
+    "schema:name": "outputsHidden",
+    "schema:description": "Should the output of the CodeChunk be hidden.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:CodeChunkMetadata"
+      }
+    ]
+  },
+  "parts": {
+    "@id": "schema:hasParts"
+  },
+  "position": {
+    "@id": "schema:position"
+  },
+  "productID": {
+    "@id": "schema:productID"
+  },
+  "programmingLanguages": {
+    "@id": "schema:programmingLanguage"
+  },
+  "relation": {
+    "@id": "schema:linkRelationship"
+  },
+  "removes": {
+    "@id": "stencila:removes",
+    "@type": "schema:Property",
+    "schema:name": "removes",
+    "schema:description": "The packages that this environment removes from the base environments listed under `extends` (if any).,",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Environment"
+      }
+    ]
+  },
+  "resourceLimit": {
+    "@id": "stencila:resourceLimit",
+    "@type": "schema:Property",
+    "schema:name": "resourceLimit",
+    "schema:description": "The maximum amount of the resource that can be used.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:ResourceParameters"
+      }
+    ]
+  },
+  "resourceRequested": {
+    "@id": "stencila:resourceRequested",
+    "@type": "schema:Property",
+    "schema:name": "resourceRequested",
+    "schema:description": "The amount of the resource that has been requested (and possibly reserved).",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:ResourceParameters"
+      }
+    ]
+  },
+  "reviews": {
+    "@id": "schema:review"
+  },
+  "rows": {
+    "@id": "stencila:rows",
+    "@type": "schema:Property",
+    "schema:name": "rows",
+    "schema:description": "Rows of cells in the table.\n",
+    "schema:domainIncludes": [
+      {
+        "@id": "schema:Table"
+      }
+    ]
+  },
+  "rowspan": {
+    "@id": "stencila:rowspan",
+    "@type": "schema:Property",
+    "schema:name": "rowspan",
+    "schema:description": "How many columns the cell extends.\n",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:TableCell"
+      }
+    ]
+  },
+  "runtimePlatform": {
+    "@id": "schema:runtimePlatform"
+  },
+  "softwareRequirements": {
+    "@id": "schema:softwareRequirements"
+  },
+  "softwareVersion": {
+    "@id": "schema:softwareVersion"
+  },
+  "sourceCode": {
+    "@id": "stencila:sourceCode",
+    "@type": "schema:Property",
+    "schema:name": "sourceCode",
+    "schema:description": "The actual source code this code chunk contains.\n",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:CodeChunk"
+      }
+    ]
+  },
+  "sourceHidden": {
+    "@id": "stencila:sourceHidden",
+    "@type": "schema:Property",
+    "schema:name": "sourceHidden",
+    "schema:description": "Should the source code of the CodeChunk be hidden.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:CodeChunkMetadata"
+      }
+    ]
+  },
+  "target": {
+    "@id": "stencila:target",
+    "@type": "schema:Property",
+    "schema:name": "target",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:Link"
+      }
+    ]
+  },
+  "targetProducts": {
+    "@id": "schema:targetProduct"
+  },
+  "telephone": {
+    "@id": "schema:telephone"
+  },
+  "telephoneNumbers": {
+    "@id": "schema:telephone"
+  },
+  "text": {
+    "@id": "schema:text"
+  },
+  "title": {
+    "@id": "schema:headline"
+  },
+  "traceback": {
+    "@id": "stencila:traceback",
+    "@type": "schema:Property",
+    "schema:name": "traceback",
+    "schema:description": "The error traceback.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:ErrorOutput"
+      }
+    ]
+  },
+  "url": {
+    "@id": "schema:url"
+  },
+  "value": {
+    "@id": "schema:value"
+  },
+  "volumeMounts": {
+    "@id": "stencila:volumeMount",
+    "@type": "schema:Property",
+    "schema:name": "volumeMounts",
+    "schema:description": "Volumes to mount in the session.",
+    "schema:domainIncludes": [
+      {
+        "@id": "stencila:SoftwareSession"
+      }
+    ]
+  }
+}
