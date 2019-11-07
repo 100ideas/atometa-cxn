@@ -8,9 +8,9 @@ export class Collection {
   cxnStore
   @observable name
   @observable rows = new Map()
-  @observable meta = new Map()
+  @observable spec = new Map()
 
-  constructor({uuid, _id, shortName, meta, rows}, rootStore){
+  constructor({uuid, _id, shortName, spec, rows}, rootStore){
     this.rootStore = rootStore
     this.cxnStore = rootStore.collectionsStore
     this.uuid = uuid === 'undefined' 
@@ -18,7 +18,7 @@ export class Collection {
       : uuid
     this.name = 'Collection_' + shortName ? shortName : _id ? _id : uuid
     this.rows.merge(rows)
-    this.meta.merge(meta)
+    this.spec.merge(spec)
   }
 
   @computed get asJS() {
@@ -26,7 +26,7 @@ export class Collection {
       uuid: this.uuid,
       name: this.name,
       rows: _toJS(this.rows),
-      meta: _toJS(this.meta)
+      spec: _toJS(this.meta)
     }
     return jsified;
   }

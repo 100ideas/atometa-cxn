@@ -1,4 +1,4 @@
-import { generateShortNanoId } from '../util';
+import { generateShortNanoId as nanoId } from '@/util';
 
 export class RootStore {
   rootStore;
@@ -7,11 +7,11 @@ export class RootStore {
   constructor(rootStore) {
     // console.log("RootStore setting rootstore for...", this)
     this.rootStore = rootStore;
-    this.app_uuid = generateShortNanoId()
+    this.app_uuid = this.generateShortNanoId()
   }
 
   generateShortNanoId(length = 8){
-    return generateShortNanoId(length)
+    return nanoId(length)
   } 
 
   getRoot() {

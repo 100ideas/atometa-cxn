@@ -1,4 +1,7 @@
 /* eslint-disable */
+
+// TODO take inspiration from https://github.com/coryhouse/react-slingshot/blob/master/webpack.config.dev.js
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -58,6 +61,16 @@ module.exports = {
       'react-dom': '@hot-loader/react-dom',
       'babel-core': '@babel/core'
     },
+    // avoid relative-imports!
+    // hat-tip to 2015 https://moduscreate.com/blog/es6-es2015-import-no-relative-path-webpack/
+    // but see https://webpack.js.org/configuration/resolve/#resolvemodules
+    // for idiomatic usage in 2019
+    // 
+    // first entry in array is searched, then second, etc. 
+    modules: [
+      path.resolve(__dirname, 'src'),
+      path.resolve('node_modules')
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin(), 

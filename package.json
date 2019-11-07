@@ -30,13 +30,15 @@
   "dependencies": {
     "@hot-loader/react-dom": "^16.8.6",
     "autobind-decorator": "^2.4.0",
+    "formik": "^2.0.3",
     "mobx": "^5.13.0",
     "mobx-react": "^6.1.1",
     "nanoid": "^2.0.3",
     "react": "^16.8.6",
     "react-cosmos": "^5.0.0-beta.0",
     "react-dom": "^16.8.6",
-    "react-hot-loader": "^4.12.0"
+    "react-hot-loader": "^4.12.0",
+    "yup": "^0.27.0"
   },
   "replacedDependencies": {
     "babel-preset-env": "^1.7.0",

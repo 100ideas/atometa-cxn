@@ -37,49 +37,115 @@ export const mock_books_by_id = {
   }
 }
 
+
+
+export const collectionSchema = {
+  id: '',
+  name: 'option otherwise from spec',
+  description: 'optional or from spec',
+  spec: 'specSchema',
+  rows: [{ _rowid: ['entity_ids'] }]
+}
+
+export const specSchema = {
+  id: '',
+  description: '',
+  columns: ['columnSchema']
+}
+
+export const columnSchema = {
+  id: '',
+  displayName: '',
+  //  spec: 'entitySchema'
+  type: '',
+  description: '',
+  example: '',
+  rules: ''
+}
+ 
+//  export const entitySchema = {
+//    type: '',
+//    id: '',
+//    description: '',
+//    example: '',
+//    rules: '',
+//  }
+
+ const exampleCollection = {
+  id: '',
+  name: '',             // get from spec if empty
+  description: '',      // get from spec if empty
+  spec: {               // spec: 'specSchema',
+    $id: '',
+    title: '',
+    description: '',
+    entities: {          // columns: ['columnSpecs'],
+    name: {
+      id: 'name',
+      displayName: 'Name',
+      type: 'string',
+      description: '',
+      example: '',
+      validation: '',
+    },
+    cover_ref: {
+      id: 'cover_ref',
+      displayName: 'cover',
+      type: 'ref',
+      description: '',
+      example: '',
+      validation: '',
+    }
+  },
+  rows: [
+    { _rowid: [ 'entity_ids' ] }
+  ]
+ }
+}
+
 // kvArray for easy Map() creation
 export const mockDefinitions = [
-  [ 'isbn_10',     
+  [ 'isbns',     
     {
-      $id         : '#/isbn_10',
-      title       : 'isbn_10',
+      id         : 'isbns',
+      name        : 'isbns',
       description : "book's isbn_10 formatted string",
       tags        : [ 'isbn', 'isbn_10', 'isbn10', 'isbn-10' ],
-      type        : 'string',
-      example     : '0-449-23949-7',
-      validation  : ''
-    },
+      spec        : {
+        $id         : 'isbns',
+        title        : 'book isbns',
+        description : 'book isbns, only isbn10',
+        entities: {
+          isbn_10 : {
+            type        : 'string',
+            description : 'ISBN-10',
+            displayName: 'isbn',
+            example     : '0-449-23949-7',
+            validation  : ''
+          }
+        }
+      }
+    }
   ],[ 'book_meta',
     {
+      id         : 'book_meta',
       name       : "Books",
       description: "book_inventory",
       tags       : [ 'book' ],
-      rules      : [
-        ['#', 'collection-level'],
-        ['#/isbn_10', x => typeof x === 'string' && x.length === 10],
-      ],
-      example    : {
-        isbn_13         : 9780449239490,
-        isbn_10         : '0449239497',
-        title           : 'I, Robot',
-        author          : 'Isaac Asimov',
-        description     : 'The three laws of Robotics:\r\n\r\n 1. A robot may not injure a human being or...',
-        publisher       : 'Fawcett Crest',
-        number_of_pages : 192,
-        publish_date    : '1977',
-        worksUrl        : 'https://openlibrary.org/works/OL46404W.json',
-        thumbnail_url   : 'https://covers.openlibrary.org/b/id/6517773.jpg'
-      },
+
       // schema data
-      schema     : {
+      spec     : {
         $id         : '#book_meta',
-        title       : 'book metadata',
+        title        : 'book metadata',
         description : 'schema of book metadata from openlibrary API',
-        type        : 'object',
-        properties  : {
+        entities  : {
           isbn_10         : {
             description : 'ISBN-10',
-            type        : 'string'
+            type        : 'string',
+            displayName: 'cover',
+            description: '',
+            example: '',
+            validation: '',
           },
           title           : {
             description : 'title of work',
@@ -118,5 +184,22 @@ export const mockDefinitions = [
     }
   ]
 ]
+
+// rules      : [
+//   ['#', 'collection-level'],
+//   ['#/isbn_10', x => typeof x === 'string' && x.length === 10],
+// ],
+// example    : {
+//   isbn_13         : 9780449239490,
+//   isbn_10         : '0449239497',
+//   title           : 'I, Robot',
+//   author          : 'Isaac Asimov',
+//   description     : 'The three laws of Robotics:\r\n\r\n 1. A robot may not injure a human being or...',
+//   publisher       : 'Fawcett Crest',
+//   number_of_pages : 192,
+//   publish_date    : '1977',
+//   worksUrl        : 'https://openlibrary.org/works/OL46404W.json',
+//   thumbnail_url   : 'https://covers.openlibrary.org/b/id/6517773.jpg'
+// },
 
 export const mock_book_and_meta = {...mock_books_by_id['block_1/uid2/v1'], shortName: 'book_inventory', meta: {...mockDefinitions[1][1]}}
