@@ -5,7 +5,8 @@ import { observer } from "mobx-react-lite";
 
 import { ItemForm } from './ItemForm'
 import { SpecForm } from './SpecForm'
-import './forms.css';
+// import 'formik.css';
+// import './forms.css';
 
 export const CollectionViewer = observer( ({ collection }) => {
   let [viewComponent, setViewComponent] = useState('default')

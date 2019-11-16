@@ -9,16 +9,20 @@ export class Collection {
   @observable name
   @observable rows = new Map()
   @observable spec = new Map()
+  
+  @observable form
 
-  constructor({uuid, _id, shortName, spec, rows}, rootStore){
+  constructor({uuid, _id, shortName, spec, rows, ...rest}, rootStore){
     this.rootStore = rootStore
     this.cxnStore = rootStore.collectionsStore
     this.uuid = uuid === 'undefined' 
-      ? `${this.rootStore.notebook_uuid}-cxn-${this.generateShortNanoId()}`
+      ? `${this.rootStore.app_uuid}-cxn-${this.generateShortNanoId()}`
       : uuid
     this.name = 'Collection_' + shortName ? shortName : _id ? _id : uuid
     this.rows.merge(rows)
     this.spec.merge(spec)
+
+    if (rest.form) this.form = rest.form
   }
 
   @computed get asJS() {
@@ -26,11 +30,15 @@ export class Collection {
       uuid: this.uuid,
       name: this.name,
       rows: _toJS(this.rows),
-      spec: _toJS(this.meta)
+      spec: _toJS(this.spec),
+      form: this.form
     }
     return jsified;
   }
-
+  
+  @action updateForm(newvals){
+    this.form = {...this.form, ...newvals}
+  }
 }
 
 
@@ -41,10 +49,16 @@ export class CollectionsStore extends RootStore {
 
   constructor(_rootStore) {
     super(_rootStore)
-    this.uuid = `${this.notebook_uuid}-cxnstore-${this.generateShortNanoId()}`
+    // this.uuid = `${this.app_uuid}-cxnstore-${this.generateShortNanoId()}`
+    this.uuid = `collectionsStore`
+    console.log("[init] collectionStore store initialized")
   }
-  _get(uuid){
-    return this.cxns.get(id)
+  getCollection(uuid){
+    return this.cxns.get(uuid)
+  }
+  getCollectionAsJS(uuid){
+    // return this.cxns.get(uuid).asJS
+    return _toJS(this.cxns.get(uuid))
   }
   @computed get uuids() {
     return [...this.cxns.keys()]
@@ -74,12 +88,15 @@ export class CollectionsStore extends RootStore {
     // }
     let count = 0
     let hit = false
-    console.log(this.cxns.size)
+    
     for ( let i=0;i<this.cxns.size;i++ ){ 
       let cxn = this.cxns.get(this.uuids[i])
-      let cxnjs = cxn.asJS
-      console.log(count, ' ++++++ ', this.uuid, i, this.uuids[i], cxnjs)
-      console.log(cxnjs.meta)
+      // let cxnjs = cxn.asJS
+      let cxnjs = _toJS(cxn)
+      
+      // console.log(count, ' ++++++ ', this.uuid, i, this.uuids[i], cxnjs)
+      // console.log(cxnjs.meta)
+
       // if (_.some(cxn.meta.asJS, [path, value])) hit = cxn; break
       // debugger;
       // if (_.some([cxn], [path, value])) {hit = cxn; return}
@@ -90,15 +107,15 @@ export class CollectionsStore extends RootStore {
         return hit.asJS.rows
       }
     }
-    console.log(count, hit)
+    // console.log(count, hit)
     return hit
     // return _.some(this.all, path) && _.get(this.all, path)
   }
   
   @action create(serializedCxn = false) {
-    let newUuid = `${this.notebook_uuid}-cxn-${this.generateShortNanoId()}`
+    let newUuid = `${this.app_uuid}-cxn-${this.generateShortNanoId()}`
     console.log('CollectionStore trying to create new Collection:', newUuid)
-    if (!serializedCxn) return this.cxns.set(newUuid, new Collection({uuid: newUuid}, this.rootStore)).get('newUuid')
+    if (!serializedCxn) return this.cxns.set(newUuid, new Collection({uuid: newUuid}, this.rootStore)).get(newUuid)
     if (typeof serializedCxn === 'string') {
       try {
         serializedCxn = JSON.parse(serializedCxn)
@@ -107,16 +124,16 @@ export class CollectionsStore extends RootStore {
         return
       }
     }
-    let uuid = _.get(serializedCxn, 'uuid')
-    if (this.cxns.has(uuid)) {
-      console.warn('CollectionStore.create() tried to create collection that already exists; updating instead for ', uuid)
-      return this.cxns.get(uuid).update(serializedCxn).get(uuid)
+    let originalUuid = _.get(serializedCxn, 'uuid')
+    if (this.cxns.has(originalUuid)) {
+      console.warn('CollectionStore.create() tried to create collection that already exists; updating instead for ', originalUuid)
+      return this.cxns.get(originalUuid).update(serializedCxn).get(originalUuid)
     }
-    if (uuid === undefined || this.cxns.has(uuid)){
-      console.log('CollectionStore created new Collection:', uuid, newUuid, {...serializedCxn})
-      return this.cxns.set(newUuid, new Collection({uuid: newUuid, ...serializedCxn}, this.rootStore)).get('newUuid')
+    if (originalUuid === undefined){
+      console.log(`CollectionStore created new Collection ${originalUuid ? originalUuid : newUuid}:`, {...serializedCxn})
+      return this.cxns.set(newUuid, new Collection({uuid: newUuid, ...serializedCxn}, this.rootStore)).get(newUuid)
     }
-    return this.cxns.set(newUuid, new Collection({uuid: newUuid, ...serializedCxn}, this.rootStore)).get('newUuid')
+    return this.cxns.set(originalUuid, new Collection({...serializedCxn}, this.rootStore)).get(originalUuid)
   }
 
   @action delete(cxnId) {
