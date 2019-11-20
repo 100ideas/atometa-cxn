@@ -17,7 +17,7 @@ import {
 import { observer, Observer } from "mobx-react-lite";
 import * as yup from 'yup'
 import { Debug } from '@/components/Collection/FormDebug'
-import "react-hook-form.css";
+// import "react-hook-form.css";
 
 let cxn = observable({
 

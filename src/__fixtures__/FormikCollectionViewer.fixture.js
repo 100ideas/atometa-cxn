@@ -1,7 +1,7 @@
 import React from 'react'
 import { observer, Observer } from "mobx-react-lite";
 import { useStore } from "stores";
-import { CollectionViewer } from 'components/Collection'
+import { CollectionViewer } from 'components/FormikCollection'
 import { mock_book_and_meta } from '@/util/mocks'
 
 /**
