@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useStore } from "stores";
 import { Formik, Form, useField, Field, FieldArray } from "formik";
 import * as Yup from 'yup';
-import { Debug, FormikDebug } from './FormDebug'
+import { Debug, FormikDebug } from './FormikDebug'
 // import { FormHeader } from './FormHeader'
 
 export const MyDynamicForm = observer( ({

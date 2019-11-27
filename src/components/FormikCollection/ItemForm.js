@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, useField, Field, FieldArray } from "formik";
 import * as Yup from 'yup';
-import { FormikDebug } from './FormDebug'
+import { FormikDebug } from './FormikDebug'
 // import { FormHeader } from './FormHeader'
 
 const MyTextInput = ({ label, ...props }) => {

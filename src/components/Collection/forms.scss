@@ -1,0 +1,293 @@
+h1, h2, h3, h4, h5, h6 {
+  /* color: var(--text-color); */
+  color: var(--gray-400);
+  font-weight: 400;
+  font-family: "avenir next",
+    "helvetica neue", Lato, -apple-system;
+}
+
+h5 {
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  /* font-kerning: auto; */
+}
+h6 {
+  /* font-family: "avenir next",
+    "helvetica neue", Lato, -apple-system; */
+  letter-spacing: 0.8px;
+  /* font-kerning: auto; */
+  font-weight: 400;
+  font-size: 14px;
+}
+
+a {
+  /* color: #08c; */
+  color: var(--blue-200);
+}
+
+.inline {
+  display: inline-block;
+}
+
+/* h4:last-child {
+  color: var(--text-color);
+} */
+
+code {
+  background-color: var(--gray-800);
+  color: var(--gray-500);
+  font-weight: 500;
+  padding: 0px 10px 0 6px;
+  font-size: 1rem;
+  /* background-color: var(--blue-900); */
+  /* color: #000000; */
+  
+}
+
+code a {
+  border-radius: 2px;
+  border-bottom: 1px solid var(--text-decoration-color);
+  padding-bottom: 4px;
+}
+
+h4 code {
+  color: var(--red-500);
+  font-size: 1.25rem;
+  letter-spacing: -0.03rem;
+  line-height: 1.4;
+  background: transparent;
+}
+
+/* handy ––––––––––––––––––––––––––––––––– */
+
+.fortychar {
+  min-width: 44ch;
+}
+.nice-title {
+  color: var(--blue-200);
+  font-size: 2rem;
+  /* font-weight: 400; */
+  letter-spacing: 0.75px;
+  font-family: "avenir next", "helvetica neue", Lato, -apple-system;
+}
+
+button.bluebutton {
+  display: inline;
+  padding: 0.2rem 1rem;
+  line-height: 1rem;
+  vertical-align: middle;
+  background-color: var(--blue-600);
+  border: 2px solid var(--blue-600);
+  border: none;
+  color: var(--blue-900);
+  color: var(--gray-900);
+  &:hover {
+    background-color: var(--blue-400);
+    color: var(--blue-200);
+  }
+}
+button.pill {
+  // background-color: deeppink;
+  // border: none;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  min-width: fit-content;
+  width: 2em;
+  &:focus {
+    outline: none;
+  }
+}
+
+/* FormDebug.js ––––––––––––––––––––––––––––––––– */
+
+.json-debug {
+  display: flex;
+  /* color: var(--red-500); */
+  margin-top: 1em;
+  flex-wrap: wrap;
+  flex-grow: 1;
+
+  .propsbox pre {
+    color: var(--blue-200);
+    font-size: 1rem;
+    /* font-weight: 400; */
+    letter-spacing: 0.75px;
+    font-family: "avenir next", "helvetica neue", Lato, -apple-system;
+  }
+
+  .propsbox {
+    border: 2px solid var(--gray-600);
+    border-radius: 10px;
+    padding: 0.65rem 0.5rem;
+    /* font-size: 1rem; */
+    font-weight: 400;
+    font-family: "avenir next", "helvetica neue", Lato, -apple-system;
+    letter-spacing: 0.75px;
+    /* font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; */
+    font-size: 0.85rem;
+  }
+  .propsbox-fancy {
+    /* margin: '1rem 0';
+    padding: '.5rem' */
+    margin: 0 2rem 2em 0;
+    
+  }
+  .propsbox-json pre strong {
+    font-weight: bolder;
+    color: var(--red-500);
+  }
+  .propsbox code {
+    font-weight: bolder;
+    color: var(--red-500);
+    background: none;
+  }
+  .propsbox pre {
+    color: var(--blue-200);
+    font-size: 1rem;
+    /* font-weight: 400; */
+    letter-spacing: 0.75px;
+    font-family: "avenir next", "helvetica neue", Lato, -apple-system;
+  }
+  .textbox {
+    /* font-size: 0.85rem; */
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-family: "avenir next", "helvetica neue", Lato, -apple-system;  
+    color: var(--gray-400);
+  }
+  .textbox strong {
+    color: var(--blue-300);
+  }
+  code {
+    font-size: 1.2rem;
+    color: var(--red-500);
+  }
+  pre {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .flexbar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .flexbar h5.propsbox-title {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    /* display: inline-block; */
+    /* margin: 0px 0 0 1em; */
+    margin-right: 1em;
+    margin-bottom: 0em;
+  }
+  .flexbar .srcfile {
+    /* text-align: right; */
+    color: var(--red-500);
+    margin: 0;
+    align-self: flex-end;
+  }
+  .flexbar.bm2 {
+    margin-bottom: 2em;
+  }
+
+  .repo-links {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .repo-links .src-link {
+    /* text-align: right; */
+    color: var(--red-500);
+    /* margin: 0; */
+    align-self: flex-end;
+    margin-top: 0.5em;
+  }
+
+  .repo-links .src-link a {
+    /* margin-top: 10px; */
+    margin-right: 2em;
+    margin-bottom: 1em;
+    color: var(--red-500);
+    border-bottom-color: var(--red-800);
+  }
+
+  li {
+    margin: 5px 0;
+  }
+  ol code, ul code {
+    margin-right: 1em;
+  }
+}
+
+
+
+/* button styles (thx react-hook-form) ––––––––––––––––––––––––––––––––– */
+/* .hookform {
+  
+  button[type="submit"],
+  input[type="submit"] {
+    background: #ec5990;
+    color: white;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+  }
+
+  button[type="submit"]:hover,
+  input[type="submit"]:hover {
+    background: #bf1650;
+  }
+
+  button[type="submit"]:active,
+  input[type="button"]:active,
+  input[type="submit"]:active {
+    transition: 0.3s all;
+    transform: translateY(3px);
+    border: 1px solid transparent;
+    opacity: 0.8;
+  }
+
+  input:disabled {
+    opacity: 0.4;
+  }
+
+  input[type="button"]:hover {
+    transition: 0.3s all;
+  }
+
+  button[type="submit"],
+  input[type="button"],
+  input[type="submit"] {
+    -webkit-appearance: none;
+  }
+
+  button[type="button"] {
+    display: block;
+    appearance: none;
+    background: #333;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+
+  button {
+    display: block;
+    appearance: none;
+    margin-top: 40px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+} */
