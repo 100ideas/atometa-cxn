@@ -1,15 +1,19 @@
 {
   "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "loose": true,
-        "modules": false,
-        "targets": {
-          "browsers": "last 2 chrome versions"
-        }
-      }
-    ],
+    // trying out @babel/preset-modules for better performance & readability
+    // https://github.com/babel/preset-modules
+    //
+    // [
+    //   "@babel/preset-env",
+    //   {
+    //     "loose": true,
+    //     "modules": false,
+    //     "targets": {
+    //       "browsers": "last 2 chrome versions"
+    //     }
+    //   }
+    // ],
+    "@babel/preset-modules",
     "@babel/preset-react"
   ],
   "plugins": [
