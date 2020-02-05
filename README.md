@@ -1,9 +1,49 @@
-# mobx + react-hot-loader basic boilerplate
+
+# atometa-cxn
+
+playground for exploring how to design "causal tree" type CRDTs for computation graph + data input/output management and combine them with mobx for reactive frontend. see [docs/2020-jan_atometa-data-model.md](docs/2020-jan_atometa-data-model.md)
+
+```TODO insert diagram here...```
+
+### background
+
+##### CRDT / causal tree source code menagerie:
+- https://github.com/courajs/ordt-demo/blob/master/src/ordts/sequence.js
+- https://github.com/peer-base/js-delta-crdts
+- https://docs.textile.io/a-tour-of-textile/
+- http://archagon.net/blog/2018/03/24/data-laced-with-history/
+
+##### related reading
+- slides sketching out CRDTs https://speakerdeck.com/ept/convergence-versus-consensus-crdts-and-the-quest-for-distributed-consistency
+- http://jtfmumm.com/blog/2015/11/17/crdt-primer-1-defanging-order-theory/
+- https://blog.acolyer.org/2016/04/25/delta-state-replicated-data-types/
+- https://blog.acolyer.org/2015/03/18/a-comprehensive-study-of-convergent-and-commutative-replicated-data-types/
+- https://blog.acolyer.org/2019/11/25/mergeable-replicated-data-types-part-i/
+- **recommended** 2018 kleppman (automerge) OpSets: Sequential Specifications for Replicated Datatypes (Extended Version) https://arxiv.org/pdf/1805.04263.pdf https://arxiv.org/pdf/1805.04263.pdf
+- textile.io whitepaper (crdt + ipfs + event-sourcing + unidirectional UI -> redecer -> store data flow) https://blog.textile.io/introducing-textiles-threads-protocol/
+
+
+## dev setup
+
+```bash
+git clone ...; cd 
+
+# install
+yarn 
+
+# start react-cosmos component testing environment - like storybook, but more flexible (preferred)
+yarn dev
+
+# or serve app directly w/ webpack
+yarn start
+```
 
 ---
 
+### built on top of [`mobx + react-hot-loader basic boilerplate`](https://github.com/100ideas/boilerplate-mobx-react-hot-loader) - README below
+
 ## get started
-- clone repo 
+- clone repo https://github.com/100ideas/boilerplate-mobx-react-hot-loader
 - `git checkout boilerplate`
   - this branch is the same as `react-hot-loader/examples/mobx` but upgraded for babel7
 

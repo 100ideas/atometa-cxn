@@ -4,8 +4,6 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --hot",
-    "start:debug": "webpack-dev-server --hot -d",
-    "start-old": "run-p start:**",
     "dev": "yarn run cosmos"
   },
   "devDependencies": {
