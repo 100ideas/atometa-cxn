@@ -1,5 +1,45 @@
 ## 04 Feb 2020 - notes on designing causal tree
 
+#### automerge slack chat msg:
+
+Hi friends, I've recently been desiging a "causal tree"-style CRDT for a data notebook app, and now that its getting hairy I'm back wondering why not try to use lots of automerge?
+
+Users insert and operate on data and files inside "blocks", which serve to group related operations and trigger previews of how state would change after execution. Similar to cells in jupyter notebooks, except blocks provide logical naming & scoping of their changes to state, and can be organized in a tree structure.
+
+The notebook uses a causal tree to store data values as rows, tables, metadata, and links (a la automerge) between them.
+
+In addition to the changes to state caused by executing the block tree, the blocks themselves can change, and hopefully will be able to incrementally re-run if their are changes to the data value inputs they depend on.
+
+So I am trying to manage two "perpendicular" sources of changes to state: changes to blocks, which is like changing the "program" that can generate data, and changes to data values that are used as inputs and created as outputs from executing the block trees.
+
+I was initially drawn to causal tree CRDTs because they intrinsically resemble the logical structure of notebook block editor, and they make it trivial to rematerialize state that includes or excludes arbitrary subtrees of the causal tree. I.e. to preview how changes to the program in a given block would effect state, duplicate subtree representing the block in the causal tree, give it a new "site id", and replay the appropriate children nodes to generate a (temporary) new tree of data values. (that's the plan at least).
+
+But maybe automerge will work!
+
+1. does automerge provide a utility for getting a materialized view of the system, given a set of uuids+timestamps+ids? (I thought I remembered a `Automerge.makeView()` feature, but can't find it in the source.) related discussion: https://github.com/automerge/automerge/issues/4#issuecomment-577738253
+
+related reading / causal tree code:
+https://github.com/courajs/ordt-demo/blob/master/src/ordts/sequence.js
+https://github.com/peer-base/js-delta-crdts
+http://archagon.net/blog/2018/03/24/data-laced-with-history/
+
+
+      
+
+
+---
+
+#### textile slack chat msg:
+Hi everyone! I'm familiar with DAT (less with IPFS), and currently working on writing a causal-tree CRDT to represent branches/merges in a computation graph and its attendant data inputs and ouputs. Was just reconsidering automerge earlier tonight and came across the 2019 Threads paper.
+
+I'd like to use textile threads drive my JS application and provide data versioning & replication.  One of the major use cases I want to support is transiently forking part of the state (computational graph), merging in edits, then recomputing the results and showing how they differ from the original (parent) state. This is to help the user iteratively explore the effects of changing their program's structure its data dependancies - they may want to undo it all, or only commit and merge the changes after experimenting a bit.
+
+the 2019 whitepaper describes textile's `store -> events -> dispatcher -> reducers (& datastore) -> event bus -> log service ` state update + control loop. 
+
+Would it be possible to add special dispatchers + reducers that short-circuit the event-bus and instead only generate temporary local state? Partially inside textile and partially outside of it? I am thinking this might be a nice way to shadow the app's state with a lightweight, transient, non-replicated draft of changes to state and to use this for rendering previews of what the draft changes would do. Or would it be better to build this completely on top of textile, in another separate layer (that perhaps still listens to certain events)?
+
+---
+
 IDs must support partial order of all nodes. For CRDTs, "A join semi-lattice is an order <S,≤> for which there exists a join `x ∨ y` for any `x,y ∈ S`."
 
 CRDT / CT needs to take atom, or weave of atoms, and `merge` them with existing tree. How are concurrent changes hangled? (LWW) last-write-win? something else?
@@ -155,6 +195,7 @@ additionally, `ops` defined in CT `nodes` should be pure? / no side effects? hmm
 ![](img/Kleppmann_data-structures-as-queries-expressing-crdts-using-datalog_pg36-39.png)
 CT (aka RGA crdt type) operations, datalog style 
 
+- automerge whitepaper: "OpSets: Sequential Specifications for Replicated Datatypes" https://arxiv.org/pdf/1805.04263.pdf
 - github.com/courajs/ordt-demo/blob/master/src/ordts/sequence.js **ORDT in JS! refs archagon CT**
 - github.com/peer-base/js-delta-crdts
 - www.youtube.com/watch?v=Cn9pIX8BWIU
