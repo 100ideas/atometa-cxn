@@ -61,12 +61,12 @@ module.exports = (webpackConfig, env) => {
     }
   }
 
-  const updatedResolveModules = [
-    // path.resolve(__dirname, 'src'),
-    path.resolve(__dirname, 'src'),
-    path.resolve('node_modules'),
-    ...currentResolveModules
-  ]
+  // const updatedResolveModules = [
+  //   // path.resolve(__dirname, 'src'),
+  //   path.resolve(__dirname, 'src'),
+  //   path.resolve('node_modules'),
+  //   ...currentResolveModules
+  // ]
 
   // webpackConfig.module.rules.push(newRule)
   newRules.map(rule => webpackConfig.module.rules.push(rule) )

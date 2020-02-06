@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 // import { useStore } from "stores";
-import useForm from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import {
   observable,
   computed,
@@ -16,7 +16,8 @@ import {
 } from "mobx";
 import { observer, Observer } from "mobx-react-lite";
 import * as yup from 'yup'
-import { Debug } from '@/components/Collection/FormDebug'
+// import { Debug } from '@/components/Collection/FormDebug'
+import { Debug } from '../components/Collection/FormDebug'
 // import "react-hook-form.css";
 
 let cxn = observable({
@@ -75,7 +76,8 @@ function Form() {
 
   let currVals = watch()
   Object.keys(currVals).map( k => {
-    if(formState.touched.includes(k)){
+    // if(formState.touched.includes(k)){
+      if(k in formState.touched){
       if(! (k in errors)) formCxn.temp[k] = currVals[k]
     }
   })

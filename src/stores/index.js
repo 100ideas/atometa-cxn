@@ -1,6 +1,7 @@
 import React from "react";
 import { autorun, entries } from "mobx"; 
-import { generateShortNanoId } from '@/util';
+// import { generateShortNanoId } from '@/util';
+import { generateShortNanoId } from '../util';
 import { RootStore } from './RootStore'
 import { CollectionsStore } from './CollectionsStore'
 

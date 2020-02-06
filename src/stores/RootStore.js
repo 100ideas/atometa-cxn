@@ -1,4 +1,5 @@
-import { generateShortNanoId as nanoId } from '@/util';
+// import { generateShortNanoId as nanoId } from '@/util';
+import { generateShortNanoId as nanoId } from '../util';
 
 export class RootStore {
   rootStore;

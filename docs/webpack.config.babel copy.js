@@ -5,10 +5,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin')
+// const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: ['./src/index'],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -18,6 +18,7 @@ module.exports = {
     rules: [
       {
         test: /\.(png|svg|jpg|gif)$/,
+        include: path.resolve(__dirname, 'src'),
         use: [ 
           {
             loader: 'file-loader'
@@ -26,6 +27,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
+        include: path.resolve(__dirname, 'src'),
         use: [ 
           {
             loader: 'file-loader'
@@ -33,23 +35,27 @@ module.exports = {
         ]
       },
       {
-        exclude: /node_modules|packages/,
         test: /\.(js|jsx)$/,
-        loaders: ['react-hot-loader/webpack','babel-loader'],
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules|packages/,
+        // loaders: ['react-hot-loader/webpack','babel-loader'],
+        loaders: ['babel-loader'],
         // use: 'babel-loader',
       },
       {
         test: /\.scss$/,
+        include: path.resolve(__dirname, 'src'),
         loaders: [
           'style-loader',
-          'css-loader?sourceMap',
-          'sass-loader?sourceMap'
+          'css-loader',
+          'sass-loader'
         ]
       }, {
         test: /\.css$/,
+        include: path.resolve(__dirname, 'src'),
         loaders: [
           "style-loader",
-          "css-loader?sourceMap"
+          "css-loader"
         ]
       }
     ]
@@ -58,8 +64,9 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
       react: 'react',
-      'react-dom': '@hot-loader/react-dom',
-      'babel-core': '@babel/core'
+      // 'react-dom': '@hot-loader/react-dom',
+      'babel-core': '@babel/core',
+      '@': path.resolve(__dirname, 'src')
     },
     // avoid relative-imports!
     // hat-tip to 2015 https://moduscreate.com/blog/es6-es2015-import-no-relative-path-webpack/
@@ -73,7 +80,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin(), 
+    // new HtmlWebpackPlugin(), 
     new webpack.NamedModulesPlugin(),
     // new CopyPlugin([
     //   { from: 'node_modules/vscode-icons-js-example/docs/icons/', to: 'assets/icons/vscode' },

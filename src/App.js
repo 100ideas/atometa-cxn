@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from "mobx-react-lite";
 
-import { hot, setConfig } from 'react-hot-loader';
+// import { hot, setConfig } from 'react-hot-loader';
 setConfig({ logLevel: 'debug' });
 
 import { StoreProvider, useStore } from "./stores";
@@ -31,5 +31,5 @@ const App = () => (
   </main>
 );
 
-// export default App;
-export default hot(module)(App);
+export default App;
+// export default hot(module)(App);

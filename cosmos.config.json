@@ -1,6 +1,4 @@
 {
-  "port": 8080,
-  "webpack2": {
-    "configPath": "webpack.config.babel.js"
-  }
+  "globalImports": ["./node_modules/@pmmmwh/react-refresh-webpack-plugin/src/runtime/ReactRefreshEntry"],
+  "watchDirs": ["src"]
 }
