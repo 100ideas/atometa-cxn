@@ -16,7 +16,7 @@ let b2 = {
       spec        : {
         $id         : 'isbns',
         title        : 'book isbns',
-        description : 'book isbns, only isbn10',
+        description : 'letbook isbns, only isbn10',
         entities: {
           isbn_10 : {
             type        : 'string',

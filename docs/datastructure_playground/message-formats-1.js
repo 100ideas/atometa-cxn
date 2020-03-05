@@ -1,9 +1,15 @@
 /** exploration of serialization structures for message log & notebook nodes
  *
- *  see `atometa-cxn/docs/2020-jan_atometa-data-model.md` for prior work
- *
- *  2020-03-03: created
+ * 
+ * 2020-03-03: created
+ * see `atometa-cxn/docs/2020-jan_atometa-data-model.md` for prior work
+ * 
+ * 
  */
+
+mdx``
+
+
 
 let schema_v1 = {
   // execution context / local state

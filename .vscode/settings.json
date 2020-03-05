@@ -12,4 +12,10 @@
       "url": "http://json.schemastore.org/babelrc"
     }    
   ],
+  "files.associations": {
+    // "*.md": "mdx",
+    // "*.js": "mdx",
+  },
+  "markdown.extension.preview.autoShowPreviewToSide": true,
+  "markdown.extension.print.theme": "dark",
 }
