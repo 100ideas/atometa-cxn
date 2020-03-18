@@ -170,7 +170,7 @@ design principles:
   ```
 - want rows to have uuid that can be used to indicate membership in multiple tables, i.e. foreign key;
   - want mobx collection materialized reactive view of CT objects by uuid from weave cache, at *head* (latest version, default), or by timestamp. useful for UI 
-  - want materialized value to recompute automatically (mobx) based on users selections, if any. I.e. if upstream `block` "`b-uuid-s1@t5`" is selected, all displayed tables/rows/entities `uuid-s1@tx` should update such that their timestamp `tx <= max_timestamp( selection.children)`, i.e. views should gray-out elements caused by nodes outside of / downstream of the `weft` containing the selection's children.
+  - want materialized value to recompute automatically (mobx) based on users selections, if any. I.e. if upstream `block` "`b-uuid-s1@t5`" is selected, all displayed tables/rows/entities `uuid-s1@tx` should update such that their timestamp `tx <= max_timestamp( selection.children)`, i.e. views should gray-out elements caused by nodes outside of / downstream of the **`weft`** containing the selection's children.
   - confused for now about how to represent **parent** relationship for rows...
   - check out how automerge does linking:
     >`{ action: 'link', obj: objectId, key: key, value: objectId }`
