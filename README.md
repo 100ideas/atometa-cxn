@@ -3,7 +3,9 @@
 
 playground for exploring how to design "causal tree" type CRDTs for computation graph + data input/output management and combine them with mobx for reactive frontend. see [docs/2020-jan_atometa-data-model.md](docs/2020-jan_atometa-data-model.md)
 
-```TODO insert diagram here...```
+![sketches/2020-08_didact-notes_summer-pg29](docs/sketches/2020-08_didact-notes_summer-pg29.jpg)
+
+![sketches/2020-08_didact-notes_summer-pg30](docs/sketches/2020-08_didact-notes_summer-pg30.jpg)
 
 ### background
 
