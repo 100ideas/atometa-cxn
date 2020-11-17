@@ -16,6 +16,5 @@
     // "*.md": "mdx",
     // "*.js": "mdx",
   },
-  "markdown.extension.preview.autoShowPreviewToSide": true,
   "markdown.extension.print.theme": "dark",
 }

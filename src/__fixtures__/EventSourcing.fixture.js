@@ -19,6 +19,10 @@ import * as yup from 'yup'
 import { Debug } from '../components/Collection/FormDebug'
 // import "react-hook-form.css";
 
+P.O. Box 2210
+Traverse City MI 49685-2210
+USA
+
 const MockMsgStore = [
   {
     uuid: "site1-event-block0-5",
@@ -87,10 +91,11 @@ class NotebookEngine {
     this.site = site 
     this.uuid = uuid
     this.msgStore = msgStore
+    // if snapshot msg array passed into constructor, dispatch msgs
     if (this.msgStore.length > 0) msgStore.map(this.dispatch)
   }
   @action.bound dispatch(evt) {
-    if(!evt.type) console.error("ERROR: notebookengine cant dispatch evt missing 'type'", evt)
+    if(!evt.type) console.error("ERROR: notebookengine cant dispatch: evt missing 'type' field", evt)
     if(evt.type === 'BlockCreated') this.createBlock(evt)
   }
   @action.bound createBlock(event){
@@ -119,7 +124,7 @@ class BlockModel {
 
     // console.log('msgStore')
     // msgStore.map( m => console.log("\t", toJS(m)))
-    console.log(`\n\n$$$$$$$$#\n ${JSON.stringify(rest)}`)
+    // console.log(`\n\n$$$$$$$$#\n ${JSON.stringify(rest)}`)
   }
 
   @computed get events(){
@@ -147,7 +152,7 @@ const Block = ({uuid = "missing", title = "missing", ...rest}) =>
     <h1>{`${uuid}: ${title}`}</h1>
     <p>val@now: '[cuuid1: col1: a]'</p>
     {/* {toJS(rest)} */}
-    {console.log(`\n### Block component\n\ttitle: ${title}\n\t${toJS(rest)}\n\n.`)}
+    {console.log(`\n### Block component\n\ttitle: ${title}\n\t${toJS(rest)}\n\n.`, toJS(rest))}
   </div>
 
 const RootBlock = observer( 
