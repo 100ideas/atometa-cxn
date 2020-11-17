@@ -1,0 +1,273 @@
+~/dev/didact-play/atlaskit-mk-2
+❯ yarn jest packages/media/media-[stc]+ore/src --verbose
+yarn run v1.9.4
+$ /Users/macowell/dev/didact-play/atlaskit-mk-2/node_modules/.bin/jest packages/media/media-[stc]+ore/src --verbose
+ PASS  packages/media/media-store/src/utils/hashing/__tests__/unit/workerHasher.spec.ts
+  WorkerHasher
+    ✓ should start 5 workers if 5 workers are specified in the constructor (5ms)
+    ✓ should hash provided blobs (8ms)
+    ✓ should reject when one of the workers fails (2ms)
+
+ PASS  packages/media/media-store/src/__tests__/unit/uploader.spec.ts
+  Uploader
+    ✓ should pass down the file content to Chunkinator (9ms)
+    ✓ should create a MediaStore with the given config (1ms)
+    ✓ should use the file and collection names when creating the file (2ms)
+    ✓ should append the chunks to the upload in processing function (5ms)
+    ✓ should call onProgress with the upload percentage (2ms)
+    ✓ should resolve with the fileId of the uploaded file (1ms)
+    ✓ should reject if there was an error with the upload (3ms)
+    ✓ should use id upfront for the new file (1ms)
+    ✓ should create the file after all chunks have been appended (2ms)
+    ✓ should call onId when empty file is created (1ms)
+
+ PASS  packages/media/media-store/src/models/__tests__/unit/auth.spec.ts
+  Auth
+    isClientBasedAuth 
+      ✓ should return true for client based auth (1ms)
+      ✓ should return false for asap based auth (1ms)
+    isAsapBasedAuth
+      ✓ should return false for client based auth
+      ✓ should return true for asap based auth (1ms)
+
+ PASS  packages/media/media-store/src/__tests__/unit/media-store.spec.ts
+  MediaStore
+    given auth provider resolves
+      createUpload
+        ✓ should POST to /upload endpoint with correct options (10ms)
+      uploadChunk
+        ✓ should PUT to /chunk/:etag endpoint with correct options (2ms)
+      probeChunks
+        ✓ should POST to /chunk/probe endpoint with correct options (2ms)
+      createFileFromUpload
+        ✓ should POST to /file/upload endpoint with correct options (4ms)
+      createFileFromBinary
+        ✓ should POST to /file/binary endpoint with correct options (3ms)
+      getFile
+        ✓ should GET to /file/{fileId} endpoint with correct options (4ms)
+      appendChunksToUpload
+        ✓ should PUT to /upload/{uploadId}/chunks endpoint with correct options (1ms)
+      createCollection
+        ✓ should POST to /collection endpoint with correct options (1ms)
+      getCollection
+        ✓ should GET to /collection/{collectionName} endpoint with correct options (2ms)
+      getCollectionItems
+        ✓ should GET to /collection/{collectionName} endpoint with correct options (3ms)
+      createFile
+        ✓ should POST to /file with empty body and params (1ms)
+      getFileImageURL
+        ✓ should return the file image preview url based on the file id (1ms)
+      getImage
+        ✓ should return file image preview (3ms)
+        ✓ should merge default params with given ones (2ms)
+    given auth provider rejects
+      request
+        ✓ should reject with some error (5ms)
+
+ PASS  packages/media/media-store/src/utils/__tests__/unit/request.spec.ts
+  request
+    ✓ should call fetch with GET method given url only (7ms)
+    ✓ should call fetch with auth query parameters given GET request and client based auth (4ms)
+    ✓ should call fetch with auth query parameters given GET request and asap based auth (1ms)
+    ✓ should call fetch with auth headers given POST request and client based auth (2ms)
+    ✓ should call fetch with auth headers given GET request and asap based auth (1ms)
+    ✓ should fail if response is 400 (2ms)
+    ✓ should not fail if response is 300
+
+ PASS  packages/media/media-store/src/utils/hashing/__tests__/unit/hasherCreator.spec.ts
+  createHasher
+    ✓ should create WorkerHasher by default (2ms)
+    ✓ should create SimpleHasher if WorkerHasher throws an exception (1ms)
+
+ PASS  packages/media/media-store/src/models/__tests__/unit/auth-query-parameters.spec.ts
+  AuthQueryParameters
+    mapAuthToQueryParameters
+      ✓ should return correct query parameters for client based auth (4ms)
+      ✓ should return correct query parameters for asap based auth (7ms)
+
+ PASS  packages/media/media-store/src/utils/hashing/__tests__/unit/simpleHasher.spec.ts
+  SimpleHasher
+    ✓ should hash simple blob (11ms)
+    ✓ should return rejected promise when invalid input is given (6ms)
+
+ PASS  packages/media/media-store/src/__tests__/unit/upload-controller-spec.ts
+  UploadController
+    ✓ should call cancel function when is setted (5ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/context.spec.ts
+  Context
+    .getMediaItemProvider()
+      ✓ should return different mediaItemProviders for different fileIds (3ms)
+      ✓ should return media item when a link media item is passed in (2ms)
+      ✓ should return media item when a file media item is passed in and the media item processingStatus is not pending (1ms)
+      ✓ should return media item and then fetch media item when a file media item is passed in and the processingStatus is pending (4ms)
+      ✓ should fetch media item when no media item is passed in (2ms)
+    local preview
+      ✓ should get the local preview after being asigned (3ms)
+    .getFile()
+      ✓ should fetch the file if it doesnt exist locally (4ms)
+      ✓ should poll for changes and return the latest file state (4ms)
+      ✓ should pass options down (1ms)
+      ✓ should return local file state while file is still uploading (2ms)
+      ✓ should return file state regardless of the state (1ms)
+    .uploadFile()
+      ✓ should call media-store uploadFile with given arguments (2ms)
+      ✓ should call subscription error when upload is cancelled (1ms)
+      ✓ should emit file preview when file is a Blob (4ms)
+      ✓ should pass right mimeType when file is a Blob (1ms)
+
+ PASS  packages/media/media-core/src/providers/__tests__/unit/remoteMediaCollectionProvider.spec.ts
+  RemoteMediaCollectionProvider
+    ✓ should load the first page on construction (8ms)
+    ✓ should load the next page (4ms)
+    refresh
+      ✓ should fetch and not add any new items to the collection when there are no new items (1ms)
+      ✓ should fetch and add new items from the first page to the collection when we have loaded the first page (1ms)
+      ✓ should fetch and add new items from the first page to the collection when we have loaded the first page and multiple items have the same ID (2ms)
+      ✓ should fetch and add new items from the first page to the collection when we have loaded the second page (3ms)
+      ✓ should fetch and add new items from the first two pages to the collection when we have loaded the first page (4ms)
+      ✓ should emit a CollectionNotFoundError given collection service responds with a 404 (1ms)
+      ✓ should emit an Error given collection service responds with some other error (1ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/collection.spec.ts
+  CollectionFetcher
+    getItems()
+      ✓ should fetch items from the given collection (3ms)
+      ✓ should prepend new items to the local ones (2ms)
+      ✓ should populate cache (2ms)
+      ✓ should make request with given options (1ms)
+      ✓ should update nextInclusiveStartKey only the first time (1ms)
+    loadNextPage()
+      ✓ should update nextInclusiveStartKey (2ms)
+      ✓ should do nothing if the page is already being fetched (1ms)
+      ✓ should append new items
+  mergeItems()
+    ✓ should prepend new items to existing ones (1ms)
+    ✓ should add all new items when existing ones are empty
+    ✓ should keep existing items (1ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/createRequest.spec.ts
+  createRequest()
+    ✓ should allow to cancel a request (2ms)
+    with clientId/token auth method
+      ✓ should send the client ID and auth token in header fields by default (24ms)
+      ✓ should send auth arguments using queryParams when preventPreflight is true (16ms)
+    with asapIssuer/token auth method
+      ✓ should send the asap issuer and auth token in header fields by default (15ms)
+      ✓ should send auth arguments using queryParams when preventPreflight is true (14ms)
+    with responseType === image
+      when webp support is enabled
+        ✓ should add webp headers (16ms)
+      when webp support is disabled
+        ✓ should not add webp headers (15ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/collectionService.spec.ts
+  MediaCollectionService
+    ✓ should have correct url (7ms)
+    ✓ should have correct query parameters (3ms)
+    ✓ should have correct response (1ms)
+    ✓ should filter empty files (3ms)
+
+ PASS  packages/media/media-core/src/utils/__tests__/unit/checkWebpSupport.spec.ts
+  checkWebpSupport util
+    ✓ should return even if onerror is called (48ms)
+    without caching
+      ✓ should return true if height is 2 (41ms)
+      ✓ should return false if height is not 2 (41ms)
+    with caching
+      ✓ should use cache when called second time (46ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/fileProvider.spec.ts
+  FileProvider
+    ✓ should complete given file that succeeds immediately (4ms)
+    ✓ should next partial items given file that succeeds in future (1004ms)
+    ✓ should error given file service rejects (2ms)
+    ✓ should call the service only once for multiple observers (5ms)
+    ✓ should replay last file item after completion (1ms)
+    ✓ should replay complete event after completion (2ms)
+
+ PASS  packages/media/media-core/src/utils/__tests__/unit/observableFromObservablePool.spec.ts
+  observableFromObservablePool()
+    ✓ acquires the actual resource on subscription (3ms)
+    ✓ releases the actual resource when unsubscribed (2ms)
+    ✓ wires up the observables correctly
+
+ PASS  packages/media/media-core/src/utils/__tests__/unit/getMediaTypeFromUploadableFile.spec.ts
+  getMediaTypeFromUploadableFile()
+    ✓ should return unknown for non Blob files (2ms)
+    ✓ should return valid media type from Blob files (3ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/isImageRemote.spec.ts
+  isImageRemote
+    ✓ should return false for local resource (true in IE) (3ms)
+    ✓ should retun false for same host, port and protocol (true in IE) (3ms)
+    ✓ should return true for the same host, port, but different protocols (5ms)
+    ✓ should return true for the same host, protocol, but different ports (1ms)
+    ✓ should return true for the same port, protocol, but different hosts (1ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/linkService.spec.ts
+  MediaLinkService
+    ✓ should resolve link item (8ms)
+    ✓ should reject get link when server responded with 500 (3ms)
+    ✓ should add link (4ms)
+    ✓ should reject add link when server responded with 500 (3ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/linkProvider.spec.ts
+  LinkProvider
+    ✓ should complete given link service resolves a link item (12ms)
+    ✓ should error given link service rejects with an error (3ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/urlPreviewService.spec.ts
+  UrlPreviewService
+    ✓ should resolve a preview (7ms)
+    ✓ should resolve an error when iFramely fails to process provided link (11ms)
+
+ PASS  packages/media/media-core/src/services/__tests__/unit/blobService.spec.ts
+  MediaBlobService
+    fetchImageBlob()
+      ✓ should allow animation by default (1ms)
+      ✓ should allow consumers to disallow animation (1ms)
+      ✓ should use "crop" resize mode as default (1ms)
+      ✓ should allow consumers to specify a resize mode
+
+ PASS  packages/media/media-core/src/__tests__/unit/fileStreamCache.spec.ts
+  FileStreamCache
+    ✓ should return the stream if already exist (5ms)
+    ✓ createKey() (2ms)
+
+ PASS  packages/media/media-core/src/__tests__/unit/fileService.spec.ts
+  MediaFileService
+    ✓ should resolve file item from collection given or not (5ms)
+    ✓ should resolve file item from collection given (168ms)
+    ✓ should reject server responded with 500 (2ms)
+    cache
+      ✓ should cache processed files (3ms)
+      ✓ should not cache processed files if caching is disabled (6ms)
+      ✓ should not cache unprocessed files (3ms)
+
+ PASS  packages/media/media-core/src/utils/__tests__/unit/pool.spec.ts
+  Pool
+    ✓ invokes the create function when creating the first item (2ms)
+    ✓ does not invokes the create function when creating the second item (1ms)
+    ✓ invokes the create function again when releasing all created items (1ms)
+    ✓ invokes the create function for separate ids multiple times
+
+ PASS  packages/media/media-core/src/utils/__tests__/unit/mediaCollectionProviderFromPool.spec.ts
+  mediaCollectionProviderFromPool()
+    ✓ should create a provider when called once (1ms)
+    ✓ should create one provider when called twice with the same ID (1ms)
+    ✓ should create one provider when called twice with the same ID and subscribed (1ms)
+    ✓ should create two different providers when called twice with different IDs (1ms)
+    ✓ should create two providers when called twice with the same ID but the first provider has been released (1ms)
+
+ PASS  packages/media/media-core/src/utils/__tests__/unit/getMediaTypeFromMimeType.spec.ts
+  getMediaTypeFromMimeType()
+    ✓ should return media type for known mime types (3ms)
+    ✓ should return unknown for not supported media types (2ms)
+
+Test Suites: 28 passed, 28 total
+Tests:       143 passed, 143 total
+Snapshots:   0 total
+Time:        8.457s
+Ran all test suites matching "packages/media/media-[stc]+ore/src".
+✨  Done in 9.92s.

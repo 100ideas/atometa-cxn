@@ -1,0 +1,60 @@
+{
+  "type": "doc",
+  "version": 1,
+  "content": [
+{
+  "type": "paragraph",
+  "content": [
+    {
+      "type": "text",
+      "text": "Hello, ",
+      "marks": [
+        {
+          "type": "link",
+          "attrs": {
+            "href": "https://www.atlassian.com"
+          }
+        }
+      ]
+    }
+  ]
+},
+
+{
+  "type": "mediaSingle",
+  "attrs": {
+    "layout": "full-width"
+  },
+  "content": [
+    {
+      "type": "media",
+      "attrs": {
+        "type": "external",
+        "url": "http://www.fillmurray.com/200/300",
+        "height": 300,
+        "width": 200
+      }
+    }
+  ]
+},
+
+{
+  "type": "mediaSingle",
+  "attrs": {
+    "layout": "full-width"
+  },
+  "content": [
+    {
+      "type": "media",
+      "attrs": {
+        "type": "file",
+        "id": "5556346b-b081-482b-bc4a-4faca8ecd2de",
+        "collection": "MediaServicesSample",
+        "height": 200,
+        "width": 300
+      }
+    }
+  ]
+}
+
+]}
