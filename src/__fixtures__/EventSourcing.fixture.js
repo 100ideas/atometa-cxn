@@ -19,10 +19,6 @@ import * as yup from 'yup'
 import { Debug } from '../components/Collection/FormDebug'
 // import "react-hook-form.css";
 
-P.O. Box 2210
-Traverse City MI 49685-2210
-USA
-
 const MockMsgStore = [
   {
     uuid: "site1-event-block0-5",
