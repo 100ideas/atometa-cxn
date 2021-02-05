@@ -54,7 +54,7 @@
 - simple two-column frontend mockup of 1) atlaskit editor 2) spreadsheet, card, data table componenets
 - `atlaskit` branch shows markdown w/ **slate.js editor**
 - `redux` branch shows atlaskit quick-insert-provider customization `src/components/editor/helpers/quick-insert-provider.js`
-- ![](img/2018-11-07_didact-nodelist.png)
+- ![](./img/2018-11-07_1_didact-nodelist.png)
 
 
 # 2018-10: `da-play/0_mock/archive/1_didact-redux-orm`
@@ -87,7 +87,7 @@
   }],
   "outs": [] }
 ```
-- ![](./img/2018-11-07_didact-redux-orm.png)
+- ![](./img/2018-11-07_1_didact-redux-orm.png)
 
 ## 2018-06: `da-play/y_didact-archive/1_survivejs/hack-survivejs`
 - dnd kanban demo w/ redux
